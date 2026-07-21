@@ -22,8 +22,10 @@
             --gray: #a0a0a0;
             --whatsapp: #25D366;
             --instagram: #E1306C;
-            --icon-start: rgba(160, 160, 160, 0.1); /* رمادي باهت فالقاع */
-            --icon-end: rgba(220, 220, 220, 0.65);  /* رمادي واضح ومقروء لفوق */
+            --linkedin: #0A66C2;
+            --github: #ffffff;
+            --icon-start: rgba(160, 160, 160, 0.1);
+            --icon-end: rgba(220, 220, 220, 0.65);
         }
 
         * { 
@@ -41,8 +43,7 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            padding: 15px;
-            overflow: hidden;
+            padding: 20px 15px;
             position: relative;
         }
 
@@ -73,7 +74,6 @@
             animation: float-up infinite linear;
         }
 
-        /* الحركة: الرمز يبدأ غير باين، ويزيد يوضح بالرمادي كل ما طلع للفوق */
         @keyframes float-up {
             0% {
                 bottom: -80px;
@@ -83,7 +83,7 @@
             }
             75% {
                 opacity: 0.85;
-                color: var(--icon-end); /* يوصل لرمادي فاتح وواضح */
+                color: var(--icon-end);
             }
             90% {
                 opacity: 0.7;
@@ -95,7 +95,6 @@
             }
         }
 
-        /* توزيع الأيقونات والسرعات والأحجام */
         .icon-1 { left: 8%; font-size: 38px; animation-duration: 13s; animation-delay: 0s; }
         .icon-2 { left: 22%; font-size: 24px; animation-duration: 17s; animation-delay: 2s; }
         .icon-3 { left: 38%; font-size: 32px; animation-duration: 11s; animation-delay: 4s; }
@@ -186,6 +185,8 @@
         .link-btn i { font-size: 22px; }
         .link-btn:active { background-color: #383838; transform: scale(0.98); }
 
+        .linkedin i { color: var(--linkedin); }
+        .github i { color: var(--github); }
         .whatsapp i { color: var(--whatsapp); }
         .instagram i { color: var(--instagram); }
         .phone i { color: var(--primary); }
@@ -230,6 +231,16 @@
         </p>
         
         <div class="links">
+            <a href="https://www.linkedin.com/in/noamane-abdellaoui-5258941b0/" class="link-btn linkedin" target="_blank" rel="noopener">
+                <span>LinkedIn</span>
+                <i class="fab fa-linkedin"></i>
+            </a>
+
+            <a href="https://github.com/abdellaouinouaman" class="link-btn github" target="_blank" rel="noopener">
+                <span>GitHub</span>
+                <i class="fab fa-github"></i>
+            </a>
+
             <a href="https://wa.me/212780976000" class="link-btn whatsapp" target="_blank" rel="noopener">
                 <span>WhatsApp</span>
                 <i class="fab fa-whatsapp"></i>
