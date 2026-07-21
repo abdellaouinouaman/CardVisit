@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NOAMANE ABDELAOUI - Profile</title>
     
-    <!-- Meta Tags for Social Media Preview (WhatsApp / LinkedIn) -->
+    <!-- Meta Tags for Social Media Preview -->
     <meta name="description" content="Développeur & Technicien Software">
     <meta property="og:title" content="NOAMANE ABDELAOUI - Profile">
     <meta property="og:description" content="Développeur & Technicien Software">
@@ -22,7 +22,8 @@
             --gray: #a0a0a0;
             --whatsapp: #25D366;
             --instagram: #E1306C;
-            --bg-icons: rgba(255, 255, 255, 0.05); /* لون الرموز فالخلفية */
+            --icon-start: rgba(160, 160, 160, 0.1); /* رمادي باهت فالقاع */
+            --icon-end: rgba(220, 220, 220, 0.65);  /* رمادي واضح ومقروء لفوق */
         }
 
         * { 
@@ -64,44 +65,47 @@
 
         .floating-icon {
             position: absolute;
-            bottom: -100px;
-            color: var(--bg-icons);
+            bottom: -80px;
             font-size: 24px;
             user-select: none;
-            opacity: 0;
+            opacity: 0.1;
+            color: var(--icon-start);
             animation: float-up infinite linear;
         }
 
+        /* الحركة: الرمز يبدأ غير باين، ويزيد يوضح بالرمادي كل ما طلع للفوق */
         @keyframes float-up {
             0% {
-                bottom: -100px;
+                bottom: -80px;
                 transform: translateX(0) rotate(0deg);
-                opacity: 0;
+                opacity: 0.1;
+                color: var(--icon-start);
             }
-            10% {
-                opacity: 1;
+            75% {
+                opacity: 0.85;
+                color: var(--icon-end); /* يوصل لرمادي فاتح وواضح */
             }
             90% {
-                opacity: 1;
+                opacity: 0.7;
             }
             100% {
-                bottom: 100vh;
-                transform: translateX(60px) rotate(360deg);
+                bottom: 105vh;
+                transform: translateX(50px) rotate(360deg);
                 opacity: 0;
             }
         }
 
-        /* توزيع الرموز والسرعات */
-        .icon-1 { left: 10%; font-size: 40px; animation-duration: 14s; animation-delay: 0s; }
-        .icon-2 { left: 25%; font-size: 22px; animation-duration: 18s; animation-delay: 2s; }
-        .icon-3 { left: 40%; font-size: 32px; animation-duration: 12s; animation-delay: 4s; }
-        .icon-4 { left: 55%; font-size: 26px; animation-duration: 20s; animation-delay: 1s; }
-        .icon-5 { left: 70%; font-size: 36px; animation-duration: 15s; animation-delay: 3s; }
-        .icon-6 { left: 85%; font-size: 24px; animation-duration: 13s; animation-delay: 5s; }
-        .icon-7 { left: 92%; font-size: 30px; animation-duration: 19s; animation-delay: 2s; }
-        .icon-8 { left: 18%; font-size: 20px; animation-duration: 22s; animation-delay: 6s; }
+        /* توزيع الأيقونات والسرعات والأحجام */
+        .icon-1 { left: 8%; font-size: 38px; animation-duration: 13s; animation-delay: 0s; }
+        .icon-2 { left: 22%; font-size: 24px; animation-duration: 17s; animation-delay: 2s; }
+        .icon-3 { left: 38%; font-size: 32px; animation-duration: 11s; animation-delay: 4s; }
+        .icon-4 { left: 52%; font-size: 28px; animation-duration: 19s; animation-delay: 1s; }
+        .icon-5 { left: 68%; font-size: 36px; animation-duration: 14s; animation-delay: 3s; }
+        .icon-6 { left: 82%; font-size: 26px; animation-duration: 12s; animation-delay: 5s; }
+        .icon-7 { left: 92%; font-size: 30px; animation-duration: 18s; animation-delay: 2s; }
+        .icon-8 { left: 15%; font-size: 22px; animation-duration: 21s; animation-delay: 6s; }
 
-        /* --- باقي الواجهة --- */
+        /* --- الواجهة --- */
         .lang-switcher {
             margin-bottom: 20px;
             display: flex;
@@ -216,8 +220,7 @@
 
     <!-- الكارد الرئيسية -->
     <div class="card">
-        <!-- تأكد أن اسم ملف الصورة في المجلد هو profile.png -->
-        <img src="profile.png" alt="NOAMANE ABDELAOUI" class="profile-img">
+        <img src="ChatGPT Image 18 juin 2026, 13_29_01.png" alt="NOAMANE ABDELAOUI" class="profile-img">
         
         <h1>NOAMANE ABDELAOUI</h1>
         <div id="tagline">Développeur & Technicien Software</div>
