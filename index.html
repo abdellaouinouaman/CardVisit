@@ -2,22 +2,33 @@
 <html lang="fr" id="html-tag">
 <head>
     <meta charset="UTF-8">
-    <!-- هذا السطر هو الأهم لجعل الموقع متوافقاً مع حجم شاشة الهاتف -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>NOAMANE ABDELAOUI - Profile</title>
+    
+    <!-- Meta Tags for Social Media Preview (WhatsApp / LinkedIn) -->
+    <meta name="description" content="Développeur & Technicien Software">
+    <meta property="og:title" content="NOAMANE ABDELAOUI - Profile">
+    <meta property="og:description" content="Développeur & Technicien Software">
+    <meta property="og:image" content="profile.png">
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
     <style>
         :root {
             --primary: #007bff;
-            --dark: #121212;
-            --card-bg: #1e1e1e;
+            --dark: #0a0a0a;
+            --card-bg: rgba(30, 30, 30, 0.95);
             --text: #ffffff;
             --gray: #a0a0a0;
             --whatsapp: #25D366;
             --instagram: #E1306C;
+            --bg-icons: rgba(255, 255, 255, 0.05); /* لون الرموز فالخلفية */
         }
 
-        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+        * { 
+            box-sizing: border-box; 
+            -webkit-tap-highlight-color: transparent; 
+        }
 
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -29,10 +40,68 @@
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            padding: 15px; /* مسافة أمان للجوانب في الهاتف */
+            padding: 15px;
+            overflow: hidden;
+            position: relative;
         }
 
-        /* تنسيق أزرار اللغات لتناسب الإبهام */
+        /* --- خلفية الرموز البرمجية المتحركة --- */
+        .bg-animation {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .bg-icons-container {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .floating-icon {
+            position: absolute;
+            bottom: -100px;
+            color: var(--bg-icons);
+            font-size: 24px;
+            user-select: none;
+            opacity: 0;
+            animation: float-up infinite linear;
+        }
+
+        @keyframes float-up {
+            0% {
+                bottom: -100px;
+                transform: translateX(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                transform: translateX(60px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* توزيع الرموز والسرعات */
+        .icon-1 { left: 10%; font-size: 40px; animation-duration: 14s; animation-delay: 0s; }
+        .icon-2 { left: 25%; font-size: 22px; animation-duration: 18s; animation-delay: 2s; }
+        .icon-3 { left: 40%; font-size: 32px; animation-duration: 12s; animation-delay: 4s; }
+        .icon-4 { left: 55%; font-size: 26px; animation-duration: 20s; animation-delay: 1s; }
+        .icon-5 { left: 70%; font-size: 36px; animation-duration: 15s; animation-delay: 3s; }
+        .icon-6 { left: 85%; font-size: 24px; animation-duration: 13s; animation-delay: 5s; }
+        .icon-7 { left: 92%; font-size: 30px; animation-duration: 19s; animation-delay: 2s; }
+        .icon-8 { left: 18%; font-size: 20px; animation-duration: 22s; animation-delay: 6s; }
+
+        /* --- باقي الواجهة --- */
         .lang-switcher {
             margin-bottom: 20px;
             display: flex;
@@ -41,6 +110,7 @@
             padding: 6px 12px;
             border-radius: 25px;
             border: 1px solid #333;
+            z-index: 10;
         }
 
         .lang-btn {
@@ -55,7 +125,10 @@
             border-radius: 20px;
         }
 
-        .lang-btn.active { color: white; background: var(--primary); }
+        .lang-btn.active { 
+            color: white; 
+            background: var(--primary); 
+        }
 
         .card {
             background-color: var(--card-bg);
@@ -63,12 +136,13 @@
             border-radius: 30px;
             text-align: center;
             width: 100%;
-            max-width: 380px; /* حجم مثالي لمعظم الهواتف */
+            max-width: 380px;
             box-shadow: 0 15px 35px rgba(0,0,0,0.5);
             border: 1px solid #333;
+            backdrop-filter: blur(8px);
+            z-index: 10;
         }
 
-        /* صورة البروفايل مع تأثير النبض */
         .profile-img {
             width: 120px;
             height: 120px;
@@ -76,11 +150,8 @@
             border: 3px solid var(--primary);
             margin-bottom: 15px;
             object-fit: cover;
-            transition: transform 0.3s ease;
             animation: pulse-animation 4s infinite ease-in-out;
         }
-
-        .profile-img:active { transform: scale(1.1); } /* تكبير عند اللمس في الهاتف */
 
         @keyframes pulse-animation {
             0%, 100% { transform: scale(1); }
@@ -97,14 +168,15 @@
             text-decoration: none;
             color: white;
             background-color: #2a2a2a;
-            padding: 16px 20px; /* مساحة أكبر للضغط المريح */
+            padding: 16px 20px;
             border-radius: 18px;
-            transition: background 0.3s;
+            transition: all 0.2s ease;
             display: flex;
             align-items: center;
             justify-content: space-between;
             font-weight: 600;
             font-size: 16px;
+            cursor: pointer;
         }
 
         .link-btn i { font-size: 22px; }
@@ -116,20 +188,36 @@
 
         [dir="rtl"] .link-btn { flex-direction: row-reverse; }
 
-        .footer-text { margin-top: 25px; font-size: 11px; color: #444; letter-spacing: 1px; }
+        .footer-text { margin-top: 25px; font-size: 11px; color: #555; letter-spacing: 1px; }
     </style>
 </head>
 <body>
 
+    <!-- الرموز المتحركة فالخلفية -->
+    <div class="bg-animation">
+        <div class="bg-icons-container">
+            <i class="fas fa-code floating-icon icon-1"></i>
+            <i class="fas fa-terminal floating-icon icon-2"></i>
+            <i class="fas fa-database floating-icon icon-3"></i>
+            <i class="fab fa-python floating-icon icon-4"></i>
+            <i class="fab fa-js floating-icon icon-5"></i>
+            <i class="fas fa-laptop-code floating-icon icon-6"></i>
+            <i class="fas fa-server floating-icon icon-7"></i>
+            <i class="fas fa-microchip floating-icon icon-8"></i>
+        </div>
+    </div>
+
+    <!-- زر تغيير اللغة -->
     <div class="lang-switcher">
         <button class="lang-btn active" onclick="setLanguage('fr')">FR</button>
         <button class="lang-btn" onclick="setLanguage('en')">EN</button>
         <button class="lang-btn" onclick="setLanguage('ar')">AR</button>
     </div>
 
+    <!-- الكارد الرئيسية -->
     <div class="card">
-        <!-- تأكد أن اسم الصورة هو photo.jpg في GitHub -->
-        <img src="ChatGPT Image 18 juin 2026, 13_29_01.png" alt="NOAMANE ABDELAOUI" class="profile-img">
+        <!-- تأكد أن اسم ملف الصورة في المجلد هو profile.png -->
+        <img src="profile.png" alt="NOAMANE ABDELAOUI" class="profile-img">
         
         <h1>NOAMANE ABDELAOUI</h1>
         <div id="tagline">Développeur & Technicien Software</div>
@@ -139,12 +227,12 @@
         </p>
         
         <div class="links">
-            <a href="https://wa.me/212780976000" class="link-btn whatsapp" target="_blank">
+            <a href="https://wa.me/212780976000" class="link-btn whatsapp" target="_blank" rel="noopener">
                 <span>WhatsApp</span>
                 <i class="fab fa-whatsapp"></i>
             </a>
             
-            <a href="https://www.instagram.com/nouamanabdellaoui?igsh=dGJsODl0aW1vcDBh" class="link-btn instagram" target="_blank">
+            <a href="https://www.instagram.com/nouamanabdellaoui?igsh=dGJsODl0aW1vcDBh" class="link-btn instagram" target="_blank" rel="noopener">
                 <span>Instagram</span>
                 <i class="fab fa-instagram"></i>
             </a>
@@ -184,7 +272,10 @@
             document.getElementById('tagline').textContent = translations[lang].tagline;
             document.getElementById('description').textContent = translations[lang].description;
             document.getElementById('txt-call').textContent = translations[lang].call;
-            document.getElementById('html-tag').setAttribute('dir', translations[lang].dir);
+            
+            const htmlTag = document.getElementById('html-tag');
+            htmlTag.setAttribute('dir', translations[lang].dir);
+            htmlTag.setAttribute('lang', lang);
             
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
